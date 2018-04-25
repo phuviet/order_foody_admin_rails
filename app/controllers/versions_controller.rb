@@ -1,5 +1,5 @@
 class VersionsController < ApplicationController
-  before_action :set_version, only: [:show, :edit, :update, :destroy]
+  before_action :set_version, only: %i[show edit update destroy]
 
   # GET /versions
   # GET /versions.json
@@ -9,8 +9,7 @@ class VersionsController < ApplicationController
 
   # GET /versions/1
   # GET /versions/1.json
-  def show
-  end
+  def show; end
 
   # GET /versions/new
   def new
@@ -18,8 +17,7 @@ class VersionsController < ApplicationController
   end
 
   # GET /versions/1/edit
-  def edit
-  end
+  def edit; end
 
   # POST /versions
   # POST /versions.json
@@ -62,13 +60,14 @@ class VersionsController < ApplicationController
   end
 
   private
-    # Use callbacks to share common setup or constraints between actions.
-    def set_version
-      @version = Version.find(params[:id])
-    end
 
-    # Never trust parameters from the scary internet, only allow the white list through.
-    def version_params
-      params.require(:version).permit(:item_type, :item_id, :event, :whodunnit, :object)
-    end
+  # Use callbacks to share common setup or constraints between actions.
+  def set_version
+    @version = Version.find(params[:id])
+  end
+
+  # Never trust parameters from the scary internet, only allow the white list through.
+  def version_params
+    params.require(:version).permit(:item_type, :item_id, :event, :whodunnit, :object)
+  end
 end

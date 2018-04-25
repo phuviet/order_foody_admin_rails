@@ -1,4 +1,4 @@
-require "application_system_test_case"
+require 'application_system_test_case'
 
 class VersionsTest < ApplicationSystemTestCase
   # test "visiting the index" do

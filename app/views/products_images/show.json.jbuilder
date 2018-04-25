@@ -1,1 +1,1 @@
-json.partial! "products_images/products_image", products_image: @products_image
+json.partial! 'products_images/products_image', products_image: @products_image

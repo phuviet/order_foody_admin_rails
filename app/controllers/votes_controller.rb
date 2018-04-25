@@ -1,5 +1,5 @@
 class VotesController < ApplicationController
-  before_action :set_vote, only: [:show, :edit, :update, :destroy]
+  before_action :set_vote, only: %i[show edit update destroy]
 
   # GET /votes
   # GET /votes.json
@@ -9,8 +9,7 @@ class VotesController < ApplicationController
 
   # GET /votes/1
   # GET /votes/1.json
-  def show
-  end
+  def show; end
 
   # GET /votes/new
   def new
@@ -18,8 +17,7 @@ class VotesController < ApplicationController
   end
 
   # GET /votes/1/edit
-  def edit
-  end
+  def edit; end
 
   # POST /votes
   # POST /votes.json
@@ -62,13 +60,14 @@ class VotesController < ApplicationController
   end
 
   private
-    # Use callbacks to share common setup or constraints between actions.
-    def set_vote
-      @vote = Vote.find(params[:id])
-    end
 
-    # Never trust parameters from the scary internet, only allow the white list through.
-    def vote_params
-      params.require(:vote).permit(:product_id, :user_id, :star, :description, :deleted_at)
-    end
+  # Use callbacks to share common setup or constraints between actions.
+  def set_vote
+    @vote = Vote.find(params[:id])
+  end
+
+  # Never trust parameters from the scary internet, only allow the white list through.
+  def vote_params
+    params.require(:vote).permit(:product_id, :user_id, :star, :description, :deleted_at)
+  end
 end

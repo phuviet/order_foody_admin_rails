@@ -1,5 +1,5 @@
 class ApiKeysController < ApplicationController
-  before_action :set_api_key, only: [:show, :edit, :update, :destroy]
+  before_action :set_api_key, only: %i[show edit update destroy]
 
   # GET /api_keys
   # GET /api_keys.json
@@ -9,8 +9,7 @@ class ApiKeysController < ApplicationController
 
   # GET /api_keys/1
   # GET /api_keys/1.json
-  def show
-  end
+  def show; end
 
   # GET /api_keys/new
   def new
@@ -18,8 +17,7 @@ class ApiKeysController < ApplicationController
   end
 
   # GET /api_keys/1/edit
-  def edit
-  end
+  def edit; end
 
   # POST /api_keys
   # POST /api_keys.json
@@ -62,13 +60,14 @@ class ApiKeysController < ApplicationController
   end
 
   private
-    # Use callbacks to share common setup or constraints between actions.
-    def set_api_key
-      @api_key = ApiKey.find(params[:id])
-    end
 
-    # Never trust parameters from the scary internet, only allow the white list through.
-    def api_key_params
-      params.require(:api_key).permit(:access_token, :user_id, :deleted_at)
-    end
+  # Use callbacks to share common setup or constraints between actions.
+  def set_api_key
+    @api_key = ApiKey.find(params[:id])
+  end
+
+  # Never trust parameters from the scary internet, only allow the white list through.
+  def api_key_params
+    params.require(:api_key).permit(:access_token, :user_id, :deleted_at)
+  end
 end

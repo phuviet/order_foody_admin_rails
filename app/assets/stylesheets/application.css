@@ -12,4 +12,16 @@
  *
  *= require_tree .
  *= require_self
+ *= require bootstrap.min
+ *= require font-awesome
+ *= require animate.min
+ *= require custom
+ *= require maps/jquery-jvectormap-2.0.3
+ *= require icheck/flat/green
+ *= require floatexamples
+ *= require fileinput/fileinput.min
+ *= require alertifyjs/alertify.min
+ *= require alertifyjs/default.min
+ *= require selectizejs/selectize
+ *= require selectizejs/selectize.default
  */

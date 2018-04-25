@@ -1,5 +1,5 @@
 class ProductsImagesController < ApplicationController
-  before_action :set_products_image, only: [:show, :edit, :update, :destroy]
+  before_action :set_products_image, only: %i[show edit update destroy]
 
   # GET /products_images
   # GET /products_images.json
@@ -9,8 +9,7 @@ class ProductsImagesController < ApplicationController
 
   # GET /products_images/1
   # GET /products_images/1.json
-  def show
-  end
+  def show; end
 
   # GET /products_images/new
   def new
@@ -18,8 +17,7 @@ class ProductsImagesController < ApplicationController
   end
 
   # GET /products_images/1/edit
-  def edit
-  end
+  def edit; end
 
   # POST /products_images
   # POST /products_images.json
@@ -62,13 +60,14 @@ class ProductsImagesController < ApplicationController
   end
 
   private
-    # Use callbacks to share common setup or constraints between actions.
-    def set_products_image
-      @products_image = ProductsImage.find(params[:id])
-    end
 
-    # Never trust parameters from the scary internet, only allow the white list through.
-    def products_image_params
-      params.require(:products_image).permit(:image, :product_id, :deleted_at)
-    end
+  # Use callbacks to share common setup or constraints between actions.
+  def set_products_image
+    @products_image = ProductsImage.find(params[:id])
+  end
+
+  # Never trust parameters from the scary internet, only allow the white list through.
+  def products_image_params
+    params.require(:products_image).permit(:image, :product_id, :deleted_at)
+  end
 end

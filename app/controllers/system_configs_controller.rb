@@ -1,5 +1,5 @@
 class SystemConfigsController < ApplicationController
-  before_action :set_system_config, only: [:show, :edit, :update, :destroy]
+  before_action :set_system_config, only: %i[show edit update destroy]
 
   # GET /system_configs
   # GET /system_configs.json
@@ -9,8 +9,7 @@ class SystemConfigsController < ApplicationController
 
   # GET /system_configs/1
   # GET /system_configs/1.json
-  def show
-  end
+  def show; end
 
   # GET /system_configs/new
   def new
@@ -18,8 +17,7 @@ class SystemConfigsController < ApplicationController
   end
 
   # GET /system_configs/1/edit
-  def edit
-  end
+  def edit; end
 
   # POST /system_configs
   # POST /system_configs.json
@@ -62,13 +60,14 @@ class SystemConfigsController < ApplicationController
   end
 
   private
-    # Use callbacks to share common setup or constraints between actions.
-    def set_system_config
-      @system_config = SystemConfig.find(params[:id])
-    end
 
-    # Never trust parameters from the scary internet, only allow the white list through.
-    def system_config_params
-      params.require(:system_config).permit(:name, :value, :data_type)
-    end
+  # Use callbacks to share common setup or constraints between actions.
+  def set_system_config
+    @system_config = SystemConfig.find(params[:id])
+  end
+
+  # Never trust parameters from the scary internet, only allow the white list through.
+  def system_config_params
+    params.require(:system_config).permit(:name, :value, :data_type)
+  end
 end

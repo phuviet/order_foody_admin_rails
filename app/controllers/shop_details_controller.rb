@@ -1,5 +1,5 @@
 class ShopDetailsController < ApplicationController
-  before_action :set_shop_detail, only: [:show, :edit, :update, :destroy]
+  before_action :set_shop_detail, only: %i[show edit update destroy]
 
   # GET /shop_details
   # GET /shop_details.json
@@ -9,8 +9,7 @@ class ShopDetailsController < ApplicationController
 
   # GET /shop_details/1
   # GET /shop_details/1.json
-  def show
-  end
+  def show; end
 
   # GET /shop_details/new
   def new
@@ -18,8 +17,7 @@ class ShopDetailsController < ApplicationController
   end
 
   # GET /shop_details/1/edit
-  def edit
-  end
+  def edit; end
 
   # POST /shop_details
   # POST /shop_details.json
@@ -62,13 +60,14 @@ class ShopDetailsController < ApplicationController
   end
 
   private
-    # Use callbacks to share common setup or constraints between actions.
-    def set_shop_detail
-      @shop_detail = ShopDetail.find(params[:id])
-    end
 
-    # Never trust parameters from the scary internet, only allow the white list through.
-    def shop_detail_params
-      params.require(:shop_detail).permit(:key, :value, :deleted_at)
-    end
+  # Use callbacks to share common setup or constraints between actions.
+  def set_shop_detail
+    @shop_detail = ShopDetail.find(params[:id])
+  end
+
+  # Never trust parameters from the scary internet, only allow the white list through.
+  def shop_detail_params
+    params.require(:shop_detail).permit(:key, :value, :deleted_at)
+  end
 end

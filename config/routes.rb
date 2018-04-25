@@ -1,4 +1,9 @@
 Rails.application.routes.draw do
+  root 'main#index'
+
+  resources :sessions, only: %i[new create]
+  resource :sessions, only: :destroy
+
   resources :votes
   resources :versions
   resources :users
@@ -13,5 +18,6 @@ Rails.application.routes.draw do
   resources :comments
   resources :categories
   resources :api_keys
+  resources :main, only: :index
   # For details on the DSL available within this file, see http://guides.rubyonrails.org/routing.html
 end
