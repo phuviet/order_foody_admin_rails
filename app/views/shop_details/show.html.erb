@@ -1,0 +1,19 @@
+<p id="notice"><%= notice %></p>
+
+<p>
+  <strong>Key:</strong>
+  <%= @shop_detail.key %>
+</p>
+
+<p>
+  <strong>Value:</strong>
+  <%= @shop_detail.value %>
+</p>
+
+<p>
+  <strong>Deleted at:</strong>
+  <%= @shop_detail.deleted_at %>
+</p>
+
+<%= link_to 'Edit', edit_shop_detail_path(@shop_detail) %> |
+<%= link_to 'Back', shop_details_path %>

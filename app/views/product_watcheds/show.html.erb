@@ -1,0 +1,19 @@
+<p id="notice"><%= notice %></p>
+
+<p>
+  <strong>User:</strong>
+  <%= @product_watched.user %>
+</p>
+
+<p>
+  <strong>Product:</strong>
+  <%= @product_watched.product %>
+</p>
+
+<p>
+  <strong>Deleted at:</strong>
+  <%= @product_watched.deleted_at %>
+</p>
+
+<%= link_to 'Edit', edit_product_watched_path(@product_watched) %> |
+<%= link_to 'Back', product_watcheds_path %>

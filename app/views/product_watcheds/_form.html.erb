@@ -1,0 +1,32 @@
+<%= form_with(model: product_watched, local: true) do |form| %>
+  <% if product_watched.errors.any? %>
+    <div id="error_explanation">
+      <h2><%= pluralize(product_watched.errors.count, "error") %> prohibited this product_watched from being saved:</h2>
+
+      <ul>
+      <% product_watched.errors.full_messages.each do |message| %>
+        <li><%= message %></li>
+      <% end %>
+      </ul>
+    </div>
+  <% end %>
+
+  <div class="field">
+    <%= form.label :user_id %>
+    <%= form.text_field :user_id, id: :product_watched_user_id %>
+  </div>
+
+  <div class="field">
+    <%= form.label :product_id %>
+    <%= form.text_field :product_id, id: :product_watched_product_id %>
+  </div>
+
+  <div class="field">
+    <%= form.label :deleted_at %>
+    <%= form.datetime_select :deleted_at, id: :product_watched_deleted_at %>
+  </div>
+
+  <div class="actions">
+    <%= form.submit %>
+  </div>
+<% end %>

@@ -1,0 +1,7 @@
+POSTGRES_USERNAME: 'postgres'
+POSTGRES_PASSWORD: 'ngocduy'
+
+GMAIL_USERNAME: 'ngocduy30795@gmail.com'
+GMAIL_PASSWORD: 'lengocduy'
+MAIL_USERNAME: 'Order Foody'
+SEND_TO: 'duy.le@asiantech.vn'

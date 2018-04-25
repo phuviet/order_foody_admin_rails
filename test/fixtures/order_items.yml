@@ -1,0 +1,15 @@
+# Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
+
+one:
+  total_price: 1.5
+  quantity: 1
+  order: one
+  product: one
+  deleted_at: 2018-04-22 16:38:54
+
+two:
+  total_price: 1.5
+  quantity: 1
+  order: two
+  product: two
+  deleted_at: 2018-04-22 16:38:54

@@ -1,0 +1,29 @@
+<p id="notice"><%= notice %></p>
+
+<p>
+  <strong>Context:</strong>
+  <%= @comment.context %>
+</p>
+
+<p>
+  <strong>User:</strong>
+  <%= @comment.user %>
+</p>
+
+<p>
+  <strong>Product:</strong>
+  <%= @comment.product %>
+</p>
+
+<p>
+  <strong>Parent:</strong>
+  <%= @comment.parent %>
+</p>
+
+<p>
+  <strong>Deleted at:</strong>
+  <%= @comment.deleted_at %>
+</p>
+
+<%= link_to 'Edit', edit_comment_path(@comment) %> |
+<%= link_to 'Back', comments_path %>

@@ -1,0 +1,31 @@
+<p id="notice"><%= notice %></p>
+
+<h1>Shop Details</h1>
+
+<table>
+  <thead>
+    <tr>
+      <th>Key</th>
+      <th>Value</th>
+      <th>Deleted at</th>
+      <th colspan="3"></th>
+    </tr>
+  </thead>
+
+  <tbody>
+    <% @shop_details.each do |shop_detail| %>
+      <tr>
+        <td><%= shop_detail.key %></td>
+        <td><%= shop_detail.value %></td>
+        <td><%= shop_detail.deleted_at %></td>
+        <td><%= link_to 'Show', shop_detail %></td>
+        <td><%= link_to 'Edit', edit_shop_detail_path(shop_detail) %></td>
+        <td><%= link_to 'Destroy', shop_detail, method: :delete, data: { confirm: 'Are you sure?' } %></td>
+      </tr>
+    <% end %>
+  </tbody>
+</table>
+
+<br>
+
+<%= link_to 'New Shop Detail', new_shop_detail_path %>
