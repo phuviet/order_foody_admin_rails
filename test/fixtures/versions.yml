@@ -1,0 +1,15 @@
+# Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
+
+one:
+  item_type: MyString
+  item: one
+  event: MyString
+  whodunnit: MyString
+  object: MyText
+
+two:
+  item_type: MyString
+  item: two
+  event: MyString
+  whodunnit: MyString
+  object: MyText

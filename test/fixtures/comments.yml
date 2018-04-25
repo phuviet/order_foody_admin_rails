@@ -1,0 +1,15 @@
+# Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
+
+one:
+  context: MyText
+  user: one
+  product: one
+  parent: one
+  deleted_at: 2018-04-22 16:38:51
+
+two:
+  context: MyText
+  user: two
+  product: two
+  parent: two
+  deleted_at: 2018-04-22 16:38:51

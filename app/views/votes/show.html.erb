@@ -1,0 +1,29 @@
+<p id="notice"><%= notice %></p>
+
+<p>
+  <strong>Product:</strong>
+  <%= @vote.product %>
+</p>
+
+<p>
+  <strong>User:</strong>
+  <%= @vote.user %>
+</p>
+
+<p>
+  <strong>Star:</strong>
+  <%= @vote.star %>
+</p>
+
+<p>
+  <strong>Description:</strong>
+  <%= @vote.description %>
+</p>
+
+<p>
+  <strong>Deleted at:</strong>
+  <%= @vote.deleted_at %>
+</p>
+
+<%= link_to 'Edit', edit_vote_path(@vote) %> |
+<%= link_to 'Back', votes_path %>

@@ -1,0 +1,41 @@
+# Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
+
+one:
+  email: MyString
+  password_digest: MyString
+  first_name: MyString
+  last_name: MyString
+  middle_name: MyString
+  phone: MyString
+  address: MyText
+  gender: 1
+  birthday: 2018-04-22
+  avatar: MyText
+  auth_token: MyString
+  confirm_send_at: 2018-04-22 16:39:11
+  confirm_token: MyString
+  confirm_at: 2018-04-22 16:39:11
+  reset_send_at: 2018-04-22 16:39:11
+  reset_token: MyString
+  deleted_at: 2018-04-22 16:39:11
+  role: one
+
+two:
+  email: MyString
+  password_digest: MyString
+  first_name: MyString
+  last_name: MyString
+  middle_name: MyString
+  phone: MyString
+  address: MyText
+  gender: 1
+  birthday: 2018-04-22
+  avatar: MyText
+  auth_token: MyString
+  confirm_send_at: 2018-04-22 16:39:11
+  confirm_token: MyString
+  confirm_at: 2018-04-22 16:39:11
+  reset_send_at: 2018-04-22 16:39:11
+  reset_token: MyString
+  deleted_at: 2018-04-22 16:39:11
+  role: two
