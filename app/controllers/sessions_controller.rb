@@ -3,7 +3,6 @@ class SessionsController < ApplicationController
 
   def new
     @user = User.new
-    @user.errors.add(:you_must_login_first_!, '') if notice.present?
   end
 
   def create
@@ -20,6 +19,14 @@ class SessionsController < ApplicationController
         format.html { render :new }
         format.json { render json: @user.errors, status: :unprocessable_entity }
       end
+    end
+  end
+
+  def destroy
+    authorize! :destroy, :session
+    respond_to do |format|
+      log_out
+      format.html { redirect_to new_session_path }
     end
   end
 end

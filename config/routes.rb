@@ -2,7 +2,7 @@ Rails.application.routes.draw do
   root 'main#index'
 
   resources :sessions, only: %i[new create]
-  resource :sessions, only: :destroy
+  resource :sessions, only: :destroy, as: :destroy_session
 
   resources :votes
   resources :versions

@@ -6,11 +6,13 @@ class ApplicationController < ActionController::Base
   rescue_from CanCan::AccessDenied do |exception|
     respond_to do |format|
       if current_user.nil?
-        format.html { redirect_to new_session_path, notice: 'you must_login_first' }
+        format.html do
+          render file: "#{Rails.root}/public/401", layout: false, status: :unauthorized
+        end
       else
         format.json { head :forbidden, content_type: 'text/html' }
         format.html do
-          render file: "#{Rails.root}/public/401", layout: false, status: :forbidden
+          render file: "#{Rails.root}/public/403", layout: false, status: :forbidden
         end
         format.js { head :forbidden, content_type: 'text/html' }
       end

@@ -15,8 +15,9 @@
 <body>
   <div class="cover">
     <h1>Access Denied <small>Error 401</small></h1>
-    <p class="lead">The requested resource requires an authentication.</p>
-    <a style="color: #fff;" href="/">Back to home!</a>
+    <p class="lead">You are unauthorized to access this page.</p>
+    <!-- <a style="color: #fff;" href="/sessions/new">Login!</a> -->
+    <%= link_to 'Login!', controller: 'sessions', action: 'new' %>
   </div>
 </body>
 </html>
