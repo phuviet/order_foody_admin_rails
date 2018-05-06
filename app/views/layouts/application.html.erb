@@ -3,7 +3,7 @@
 <head>
   <title>EcommerceAdmin</title>
   <%= csrf_meta_tags %>
-
+  
   <%= stylesheet_link_tag    'application', media: 'all', 'data-turbolinks-track': 'reload' %>
   <%= javascript_include_tag 'application', 'data-turbolinks-track': 'reload' %>
 </head>
@@ -19,7 +19,9 @@
         <div class="left_col scroll-view">
 
           <div class="navbar nav_title" style="border: 0;">
-            <a href="index.html" class="site_title"><i class="fa fa-paw"></i> <span>Foody Order!</span></a>
+            <%= link_to main_index_path, class: 'site_title' do %>
+              <i class="fa fa-paw"></i> <span>Foody Order!</span>
+            <% end %>
           </div>
           <div class="clearfix"></div>
 
@@ -44,15 +46,15 @@
             <div class="menu_section">
               <h3>General</h3>
               <ul class="nav side-menu">
-                <li><a><i class="fa fa-home"></i> Home <span class="fa fa-chevron-down"></span></a>
-                  <ul class="nav child_menu" style="display: none">
-                    <li><a href="index.html">Dashboard</a>
-                    </li>
-                    <li><a href="index2.html">Dashboard2</a>
-                    </li>
-                    <li><a href="index3.html">Dashboard3</a>
-                    </li>
-                  </ul>
+                <li>
+                  <%= link_to main_index_path do %>
+                    <i class="fa fa-home"></i> Home 
+                  <% end %>
+                </li>
+                <li>
+                  <%= link_to products_path do %>
+                    <i class="fa fa-home"></i> Product 
+                  <% end %>
                 </li>
                 <li><a><i class="fa fa-edit"></i> Forms <span class="fa fa-chevron-down"></span></a>
                   <ul class="nav child_menu" style="display: none">

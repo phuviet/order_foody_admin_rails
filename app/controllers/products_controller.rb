@@ -4,7 +4,7 @@ class ProductsController < ApplicationController
   # GET /products
   # GET /products.json
   def index
-    @products = Product.all
+    @products = Product.with_deleted.includes(:category).order(:name)
   end
 
   # GET /products/1
@@ -13,7 +13,7 @@ class ProductsController < ApplicationController
 
   # GET /products/new
   def new
-    @product = Product.new
+    @product = Product.includes_details.new
   end
 
   # GET /products/1/edit

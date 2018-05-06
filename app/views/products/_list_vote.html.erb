@@ -1,0 +1,13 @@
+<tr>
+  <td width="30%"><%= list_vote.user.format_fullname %></td>
+  <td>
+    <%=  %>
+    <ul class="list-inline">
+      <li>
+        <%= image_tag("#{list_vote.user.avatar}", alt: "#{list_vote.user.format_fullname}", class: "avatar") %>
+      </li>
+    </ul>
+  </td>
+  <td><%= list_vote.star %></td>
+  <td><%= list_vote.description %></td>
+</tr>

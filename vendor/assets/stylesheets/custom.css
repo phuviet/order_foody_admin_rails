@@ -3636,9 +3636,9 @@ ul.messages li, .tasks li {
   padding: 8px 0;
 }
 ul.messages li img.avatar, img.avatar {
-  height: 32px;
-  width: 32px;
-  float: left;
+  height: 60px;
+  width: 60px;
+  margin: auto auto;
   display: inline-block;
   -webkit-border-radius: 2px;
   -moz-border-radius: 2px;

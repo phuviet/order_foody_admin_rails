@@ -1,5 +1,29 @@
 class Product < ApplicationRecord
+  has_paper_trail
+  acts_as_paranoid
+
+  mount_uploader :avatar, ImageUploader
+
+  # ================Association=====================
   belongs_to :category
+  has_many :order_items
+  has_many :orders, through: :order_items, dependent: :destroy
+  has_many :comments, dependent: :destroy
+  has_many :parent_comments, -> { where(parent_id: nil) }, class_name: Comment.name
+  has_many :votes, dependent: :destroy
+  has_many :products_images, dependent: :destroy
+
+  # ================Validates=====================
+  validates :category_id, presence: true
+  validates :name, presence: true
+  validates :name, uniqueness: { scope: :deleted_at }
+
+  # ================Scopes========================
+  scope :includes_details, -> {
+    includes(
+      :category, :products_images, votes: :user, parent_comments: [:user, child_comments: :user]
+    )
+  }
 
   #########SELF DEF##########
 
