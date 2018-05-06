@@ -49,4 +49,5 @@
 //= require fileinput/purify.min
 //= require fileinput/fileinput.min
 //= require alertifyjs/alertify.min
+//= require wizard/jquery.smartWizard.js
 

@@ -1,52 +1,96 @@
-<%= form_with(model: product, local: true) do |form| %>
+<div id="wizard" class="form_wizard wizard_horizontal">
+  <ul class="wizard_steps">
+    <li>
+      <a href="#step-1">
+        <span class="step_no">1</span>
+        <span class="step_descr">
+          Step 1<br />
+          <small>Step 1 description</small>
+        </span>
+      </a>
+    </li>
+    <li>
+      <a href="#step-2">
+        <span class="step_no">2</span>
+        <span class="step_descr">
+          Step 2<br />
+          <small>Step 2 description</small>
+        </span>
+      </a>
+    </li>
+  </ul>
+  <%= form_with(model: product, local: true, id: 'demo-form2' ,class: 'form-horizontal form-label-left', 
+  :html => { :multipart => true, id:'myForm' }) do |form| %>
   <% if product.errors.any? %>
-    <div id="error_explanation">
-      <h2><%= pluralize(product.errors.count, "error") %> prohibited this product from being saved:</h2>
-
-      <ul>
-      <% product.errors.full_messages.each do |message| %>
-        <li><%= message %></li>
-      <% end %>
-      </ul>
-    </div>
+  <% product.errors.full_messages.each do |message| %>
+  <script>
+    alertify.set('notifier','position', 'top-right');
+    alertify.error('<%= message %>');
+  </script>
   <% end %>
-
-  <div class="field">
-    <%= form.label :name %>
-    <%= form.text_field :name, id: :product_name %>
+  <% end %>
+  <div id="step-1">
+    <div class="x_content">
+  <br />
+  <div class="col-md-6 col-md-offset-3 col-sm-6 col-xs-12">
+    <div class="form-group">
+      <%= form.label :name, class: 'control-label col-md-3 col-sm-3 col-xs-12' do%>
+      Name <span class="required">*</span>
+      <% end %>
+      <div class="col-md-8 col-sm-7 col-xs-12">
+        <%= form.text_field :name, id: :product_name, class: 'form-control col-md-12 col-xs-12', required: true %>
+      </div>
+    </div>
+    <div class="form-group">
+      <%= form.label :price, class: 'control-label col-md-3 col-sm-3 col-xs-12' do%>
+      Price <span class="required">*</span>
+      <% end %>
+      <div class="col-md-8 col-sm-7 col-xs-12">
+        <%= form.text_field :price, id: :product_price, class: 'form-control col-md-12 col-xs-12', required: true %>
+      </div>
+    </div>
+    <div class="form-group">
+      <%= form.label :price, class: 'control-label col-md-3 col-sm-3 col-xs-12' do%>
+      Avatar <span class="required">*</span>
+      <% end %>
+      <div class="col-md-8 col-sm-7 col-xs-12">
+        <%= form.file_field :avatar, id: :product_avatar, class: 'form-control col-md-12 col-xs-12', required: true do |pic_form|%>
+          <%= pic_form.text_field :title %>
+          <%= pic_form.text_field :image %>
+        <% end %>
+      </div>
+    </div>
+    <div class="form-group">
+      <%= form.label :description, class: 'control-label col-md-3 col-sm-3 col-xs-12' do%>
+      Decription <span class="required">*</span>
+      <% end %>
+      <div class="col-md-8 col-sm-7 col-xs-12">
+        <%= form.text_area :description, id: :product_description, rows: 4, class: 'form-control col-md-12 col-xs-12', required: true %>
+      </div>
+    </div>
+    <div class="form-group">
+      <%= form.label :quantity, class: 'control-label col-md-3 col-sm-3 col-xs-12' do%>
+      Category <span class="required">*</span>
+      <% end %>
+      <div class="col-md-8 col-sm-7 col-xs-12">
+        <%= form.select :category_id, options_for_select(@categories.map{ |c| [c.name, c.id]}, selected:
+          (product.persisted? ? @category_value : nil)), {:prompt => '-- Select Category --'}, { 
+           id: 'category' , class: 'form-control col-md-12 col-xs-12', required: true}%>
+         </div>
+       </div>
+      </div>
+    </div>
   </div>
-
-  <div class="field">
-    <%= form.label :price %>
-    <%= form.text_field :price, id: :product_price %>
+  <div id="step-2">
+    <div class="col-md-6 col-md-offset-3 col-sm-6 col-xs-12">
+      <div class="form-group">
+        <%= form.fields_for :images do |p| %>
+        <label class="control-label">Images</label>
+        <%= p.file_field :image, id: 'images', multiple: true, accept: 'image/png,image/jpeg',
+        name:'images[url][]' %>
+        <% end %>
+      </div>
+    </div>
   </div>
-
-  <div class="field">
-    <%= form.label :avatar %>
-    <%= form.text_area :avatar, id: :product_avatar %>
-  </div>
-
-  <div class="field">
-    <%= form.label :description %>
-    <%= form.text_area :description, id: :product_description %>
-  </div>
-
-  <div class="field">
-    <%= form.label :star %>
-    <%= form.text_field :star, id: :product_star %>
-  </div>
-
-  <div class="field">
-    <%= form.label :category_id %>
-    <%= form.text_field :category_id, id: :product_category_id %>
-  </div>
-
-  <div class="field">
-    <%= form.label :deleted_at %>
-    <%= form.datetime_select :deleted_at, id: :product_deleted_at %>
-  </div>
-
-  <div class="actions">
-    <%= form.submit %>
-  </div>
-<% end %>
+  <% end %>
+</div>

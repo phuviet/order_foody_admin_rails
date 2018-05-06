@@ -48,7 +48,7 @@
             <div class="product_gallery">
               <% 
                 images = @product.products_images
-                for i in 1...images.count
+                for i in 0...images.count
               %>
               <a class="col-md-3">
                 <img src="<%= images[i].image.url %>" class="img-thumbnail" alt="<%= @product.name %>" />
