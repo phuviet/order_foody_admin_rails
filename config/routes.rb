@@ -7,7 +7,7 @@ Rails.application.routes.draw do
     resource :lock, only: :create, controller: 'users/locks'
   end
   resources :admins do
-    resource :lock, only: :create, controller: 'users/locks'
+    resource :lock, only: :create, controller: 'admins/locks'
   end
   resources :system_configs
   resources :shop_details

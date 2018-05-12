@@ -16,6 +16,7 @@ class AdminsController < ApplicationController
 
   # GET /admins/new
   def new
+    @notice = notice
     @admin = User.new
   end
 
@@ -28,7 +29,7 @@ class AdminsController < ApplicationController
     @admin = User.new(
       admin_params.merge(
           password: '123456', password_confirmation: '123456',
-          avatar: File.open(Rails.root.join('vendor', 'user_avatar.png'))
+          remote_avatar_url: 'https://cdn2.iconfinder.com/data/icons/ios-7-icons/50/user_male2-512.png'
         )
       )
 

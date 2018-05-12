@@ -65,6 +65,10 @@
                     <td><strong><%= @admin.address %></strong></td>
                   </tr>
                   <tr>
+                    <td width="30%">Role</td>
+                    <td><strong><%= @admin.role.name.capitalize %></strong></td>
+                  </tr>
+                  <tr>
                     <td width="30%">Status</td>
                     <% if @admin.lock.zero? %>
                     <td><strong>Available</strong></td>
