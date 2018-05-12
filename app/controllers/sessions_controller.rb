@@ -7,7 +7,7 @@ class SessionsController < ApplicationController
 
   def create
     @user = User.where.not(role_id: nil)
-                .find_by(email: params[:user][:email].downcase)
+                .find_by(email: params[:user][:email].downcase, lock: 0)
     respond_to do |format|
       if @user && @user.authenticate(params[:user][:password])
         log_in @user

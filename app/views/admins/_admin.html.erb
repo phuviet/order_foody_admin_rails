@@ -1,0 +1,25 @@
+<tr>
+  <td>
+    <ul class="list-inline">
+      <li>
+        <%= image_tag("#{admin.avatar}", alt: "#{admin.first_name}", class: "avatar") %>
+      </li>
+    </ul>
+  </td>
+  <td width="10%"><%= admin.email %></td>
+  <td><%= admin.first_name %></td>
+  <td><%= admin.last_name %></td>
+  <td><%= admin.middle_name %></td>
+  <td><%= admin.phone %></td>
+  <td><%= admin.address %></td>
+  <td><%= admin.gender %></td>
+  <td><%= admin.birthday %></td>
+  <td><%= link_to admin_path(admin) do %>
+    <button class="btn btn-primary btn-xs" ><span class="fa fa-search"></span></button>
+    <% end %>
+  </td>
+  <td><%= link_to admin_lock_path(admin), method: :post, data: { confirm: 'Are you sure?' } do %>
+    <button class="btn btn-primary btn-xs"><span class="<%= admin.lock.zero? ? 'fa fa-lock' : 'fa fa-unlock' %>"></span></button>
+    <% end %>
+  </td>
+</tr>

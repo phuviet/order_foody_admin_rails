@@ -11,13 +11,13 @@ class User < ApplicationRecord
   has_many :votes
 
   has_one :api_key, dependent: :destroy
-  belongs_to :role
+  belongs_to :role, optional: true
 
   # ================ENUMS=====================
   enum gender: %w[male female other]
 
   # ================Validates=====================
-  validates :email, presence: true
+  validates :email, :first_name, :last_name, presence: true
   validates :password_confirmation, presence: true, on: %i[create update],
                                     unless: :skip_password_validation
   validates :email, uniqueness: { scope: :deleted_at }
@@ -32,6 +32,12 @@ class User < ApplicationRecord
 
   # ===============Scope======================
   scope :incudes_order, -> { inlcudes(:orders) }
+
+  scope :only_guest, -> { where(role: nil) }
+
+  scope :expect_guest, -> { where.not(role: nil) }
+
+  scope :common_order, -> { order(:id) }
 
   # format name of user follow company format name (example: Huy Dinh Q.)
   def format_fullname

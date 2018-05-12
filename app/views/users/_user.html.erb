@@ -1,0 +1,21 @@
+<tr>
+  <td>
+    <ul class="list-inline">
+      <li>
+        <%= image_tag("#{user.avatar}", alt: "#{user.first_name}", class: "avatar") %>
+      </li>
+    </ul>
+  </td>
+  <td width="10%"><%= user.email %></td>
+  <td><%= user.first_name %></td>
+  <td><%= user.last_name %></td>
+  <td><%= user.middle_name %></td>
+  <td><%= user.phone %></td>
+  <td><%= user.address %></td>
+  <td><%= user.gender %></td>
+  <td><%= user.birthday %></td>
+  <td><%= link_to user_lock_path(user), method: :post, data: { confirm: 'Are you sure?' } do %>
+    <button class="btn btn-primary btn-xs"><span class="<%= user.lock.zero? ? 'fa fa-lock' : 'fa fa-unlock' %>"></span></button>
+    <% end %>
+  </td>
+</tr>

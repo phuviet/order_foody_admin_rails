@@ -7,10 +7,10 @@ class Ability
       can :index, :main
       can :destroy, :session
       can :manage, Product
+      can :manage, User
     elsif user && user.role.id == mod_id
       can :index, :main
       can :destroy, :session
-      can :manage, Product
     elsif user && user.role.id == member_id
       can :index, :main
       can :destroy, :session
