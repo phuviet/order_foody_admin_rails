@@ -1,15 +1,13 @@
 class RolesController < ApplicationController
+  load_and_authorize_resource
   before_action :set_role, only: %i[show edit update destroy]
 
   # GET /roles
   # GET /roles.json
   def index
+    @notice = notice
     @roles = Role.all
   end
-
-  # GET /roles/1
-  # GET /roles/1.json
-  def show; end
 
   # GET /roles/new
   def new
@@ -26,8 +24,8 @@ class RolesController < ApplicationController
 
     respond_to do |format|
       if @role.save
-        format.html { redirect_to @role, notice: 'Role was successfully created.' }
-        format.json { render :show, status: :created, location: @role }
+        format.html { redirect_to roles_path, notice: 'Role was successfully created.' }
+        format.json { render :index, status: :created, location: @role }
       else
         format.html { render :new }
         format.json { render json: @role.errors, status: :unprocessable_entity }
@@ -40,8 +38,8 @@ class RolesController < ApplicationController
   def update
     respond_to do |format|
       if @role.update(role_params)
-        format.html { redirect_to @role, notice: 'Role was successfully updated.' }
-        format.json { render :show, status: :ok, location: @role }
+        format.html { redirect_to roles_path, notice: 'Role was successfully updated.' }
+        format.json { render :index, status: :ok, location: @role }
       else
         format.html { render :edit }
         format.json { render json: @role.errors, status: :unprocessable_entity }
@@ -52,10 +50,17 @@ class RolesController < ApplicationController
   # DELETE /roles/1
   # DELETE /roles/1.json
   def destroy
-    @role.destroy
-    respond_to do |format|
-      format.html { redirect_to roles_url, notice: 'Role was successfully destroyed.' }
-      format.json { head :no_content }
+    if @role.users.present?
+      respond_to do |format|
+        format.html { redirect_to roles_path, notice: { errors: "Remove all users's whose role is #{@role.name}." } }
+        format.json { head :no_content }
+      end
+    else
+      @role.destroy
+      respond_to do |format|
+        format.html { redirect_to roles_url, notice: 'Role was successfully destroyed.' }
+        format.json { head :no_content }
+      end
     end
   end
 

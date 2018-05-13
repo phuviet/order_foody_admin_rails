@@ -1,0 +1,14 @@
+<tr>
+  <td><%= role.id %></td>
+  <td><%= role.name %></td>
+  <td><%= role.description %></td>
+  <td>
+    <%= link_to edit_role_path(role) do %>
+      <button class="btn btn-primary btn-xs"><span class="glyphicon glyphicon-pencil"></span></button>
+    <% end %>
+  </td>
+  <td><%= link_to role_path(role), method: :delete, data: { confirm: 'Are you sure?' } do %>
+    <button class="btn btn-danger btn-xs"><span class="fa fa-trash"></span></button>
+    <% end %>
+  </td>
+</tr>

@@ -11,7 +11,7 @@ Rails.application.routes.draw do
   end
   resources :system_configs
   resources :shop_details
-  resources :roles
+  resources :roles, expect: :show
   resources :products
   resources :orders
   resources :categories

@@ -8,6 +8,7 @@ class Ability
       can :destroy, :session
       can :manage, Product
       can :manage, User
+      can :manage, Role
     elsif user && user.role.id == mod_id
       can :index, :main
       can :destroy, :session
