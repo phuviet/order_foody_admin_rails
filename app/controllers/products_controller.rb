@@ -7,7 +7,7 @@ class ProductsController < ApplicationController
   # GET /products
   # GET /products.json
   def index
-    @products = Product.with_deleted.includes(:category).order(:name)
+    @products = Product.includes(:category).order(:name)
   end
 
   # GET /products/1
@@ -30,7 +30,6 @@ class ProductsController < ApplicationController
     ActiveRecord::Base.transaction do
       respond_to do |format|
         if @product.save
-          binding.pry
           if params[:images]
             params[:images][:url].each do |image|
               @product.products_images.create!(image: image)
@@ -51,6 +50,11 @@ class ProductsController < ApplicationController
   def update
     respond_to do |format|
       if @product.update(product_params)
+        if params[:images]
+          params[:images][:url].each do |image|
+            @product.products_images.create!(image: image)
+          end
+        end
         format.html { redirect_to @product, notice: { message: 'Product was successfully updated.' } }
         format.json { render :show, status: :ok, location: @product }
       else
@@ -83,6 +87,6 @@ class ProductsController < ApplicationController
     end
 
     def categories
-      @categories = Category.all
+      @categories = Category.all.where(deleted_at: nil)
     end
 end
