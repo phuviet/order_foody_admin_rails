@@ -1,5 +1,5 @@
-POSTGRES_USERNAME: 'mba0185'
-POSTGRES_PASSWORD: 'lamsaoday'
+POSTGRES_USERNAME: 'postgres'
+POSTGRES_PASSWORD: 'ngocduy'
 
 GMAIL_USERNAME: 'vietdn1991@gmail.com'
 GMAIL_PASSWORD: 'demngayxaem'

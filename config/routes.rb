@@ -9,13 +9,8 @@ Rails.application.routes.draw do
   resources :admins do
     resource :lock, only: :create, controller: 'admins/locks'
   end
-  scope module: :statictics, path: :statictics do
-    resources :top_products, only: :index do
-      collection do
-        resources :data, only: :index, controller: 'top_products/data'
-      end
-    end
-  end
+  resources :top_products, only: :index
+  resources :top_products_data, only: :index
   resources :system_configs
   resources :shop_details
   resources :roles, expect: :show

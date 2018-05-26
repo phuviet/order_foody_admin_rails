@@ -1,14 +1,10 @@
-$(function() {
-
-});
-
 $(document).ready(function(){
     $("#btn-check ").click(function(){
       let month = $("#month").val();
       let year = $("#year").val();
       $.ajax({
         method: "GET",
-        url: "/statictics/top_products/data",
+        url: "/top_products_data",
         data: "month=" + month + "&year=" + year,
         dataType: "json",
         success: function(data){

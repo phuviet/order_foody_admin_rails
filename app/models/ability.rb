@@ -4,7 +4,7 @@ class Ability
 
   def initialize(user)
     if user && user.role.id == admin_id
-      can :index, :main
+      can :index, [:main, :top_product]
       can :destroy, :session
       can :manage, Product
       can :manage, User
