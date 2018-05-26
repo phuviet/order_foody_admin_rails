@@ -4,7 +4,7 @@ class ShopDetailsController < ApplicationController
   # GET /shop_details
   # GET /shop_details.json
   def index
-    @shop_details = ShopDetail.all
+    @shop_details = ShopDetail.all.where(deleted_at: nil)
   end
 
   # GET /shop_details/1
@@ -68,6 +68,6 @@ class ShopDetailsController < ApplicationController
 
   # Never trust parameters from the scary internet, only allow the white list through.
   def shop_detail_params
-    params.require(:shop_detail).permit(:key, :value, :deleted_at)
+    params.require(:shop_detail).permit(:key, :value)
   end
 end

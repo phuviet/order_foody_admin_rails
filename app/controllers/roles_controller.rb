@@ -6,7 +6,7 @@ class RolesController < ApplicationController
   # GET /roles.json
   def index
     @notice = notice
-    @roles = Role.all
+    @roles = Role.all.where(deleted_at: nil)
   end
 
   # GET /roles/new
@@ -73,6 +73,6 @@ class RolesController < ApplicationController
 
   # Never trust parameters from the scary internet, only allow the white list through.
   def role_params
-    params.require(:role).permit(:name, :description, :deleted_at)
+    params.require(:role).permit(:name, :description)
   end
 end

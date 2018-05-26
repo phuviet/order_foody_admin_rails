@@ -4,7 +4,7 @@ class OrdersController < ApplicationController
   # GET /orders
   # GET /orders.json
   def index
-    @orders = Order.all
+    @orders = Order.all.where(deleted_at: nil)
   end
 
   # GET /orders/1
@@ -68,6 +68,6 @@ class OrdersController < ApplicationController
 
   # Never trust parameters from the scary internet, only allow the white list through.
   def order_params
-    params.require(:order).permit(:receiver, :address, :phone, :status, :user_id, :deleted_at)
+    params.require(:order).permit(:receiver, :address, :phone, :status, :user_id)
   end
 end
