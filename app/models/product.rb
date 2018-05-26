@@ -51,4 +51,29 @@ class Product < ApplicationRecord
     SQL
     ActiveRecord::Base.connection.execute(query)
   end
+
+  def self.top_products(month, year)
+    query = <<-SQL
+    SELECT
+      products.name,
+      SUM(order_items.quantity) as quantity,
+      SUM(order_items.total_price) as total
+    FROM
+      products
+      INNER JOIN order_items ON products.id = order_items.product_id
+        AND order_items.deleted_at IS NULL
+      INNER JOIN orders ON order_items.order_id = orders.id
+        AND orders.deleted_at IS NULL
+    WHERE to_char(orders.created_at, 'YYYY-MM') = '#{year}-#{month}'
+      AND products.deleted_at IS NULL
+    GROUP BY
+      products.name,
+      products.id
+    HAVING
+      SUM(order_items.quantity) > 0
+    ORDER BY quantity DESC, total DESC
+    LIMIT 10
+    SQL
+    ActiveRecord::Base.connection.execute(query)
+  end
 end
