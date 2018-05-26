@@ -36,8 +36,11 @@ class Product < ApplicationRecord
     FROM
       products
       INNER JOIN order_items ON products.id = order_items.product_id
+        AND order_items.deleted_at IS NULL
       INNER JOIN orders ON order_items.order_id = orders.id
+        AND orders.deleted_at IS NULL
     WHERE to_char(orders.created_at, 'YYYY-MM') = to_char(current_date , 'YYYY-MM')
+      AND products.deleted_at IS NULL
     GROUP BY
       products.name,
       products.id
