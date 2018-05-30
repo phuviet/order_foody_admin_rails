@@ -9,8 +9,6 @@ Rails.application.routes.draw do
   resources :admins do
     resource :lock, only: :create, controller: 'admins/locks'
   end
-  resources :top_products, only: :index
-  resources :top_products_data, only: :index
   resources :system_configs
   resources :shop_details
   resources :roles, expect: :show
@@ -18,5 +16,10 @@ Rails.application.routes.draw do
   resources :orders
   resources :categories
   resources :main, only: :index
+
+  # statictics
+  resources :top_products, only: :index
+  resources :top_products_data, only: :index
+  resources :revenue, only: :index
   # For details on the DSL available within this file, see http://guides.rubyonrails.org/routing.html
 end
