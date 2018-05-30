@@ -8,6 +8,7 @@ $(document).ready(function(){
         data: "month=" + month + "&year=" + year,
         dataType: "json",
         success: function(data){
+          $('#graph_bar_group').empty();
           if (data.length > 0) {
             Morris.Bar({
               element: 'graph_bar_group',
@@ -20,7 +21,6 @@ $(document).ready(function(){
               xLabelAngle: 60
             });
           } else {
-            $('#graph_bar_group').empty();
             alert('Data not found');
           }
         },
