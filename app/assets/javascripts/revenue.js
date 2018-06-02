@@ -12,7 +12,8 @@ $(function () {
       hideHover: 'auto',
       parseTime: false,
       lineColors: ['#26B99A', '#34495E', '#ACADAC', '#3498DB'],
-      xLabelFormat: function (y) { return 'Month ' + y.src.mon; },
+      xLabelFormat: function (x) { return 'Month ' + x.src.mon; },
+      yLabelFormat: function (y) { return '$ ' + y },
       data: data
     });
   }

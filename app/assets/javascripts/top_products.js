@@ -16,7 +16,7 @@ $(document).ready(function(){
               xkey: 'name',
               barColors: ['#26B99A', '#34495E', '#ACADAC', '#3498DB'],
               ykeys: ['quantity', 'total'],
-              labels: ['Quantity', 'Total'],
+              labels: ['Quantity', 'Total ($)'],
               hideHover: 'auto',
               xLabelAngle: 60
             });

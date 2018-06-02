@@ -4,11 +4,14 @@ class RevenueController < ApplicationController
   def index
     query = <<-SQL
       WITH dates_of_week AS (
-        SELECT DATE '2008-01-01' + (interval '1' month * generate_series(0,11)) as date
+        SELECT DATE '2018-01-01' + (interval '1' month * generate_series(0,11)) as date
       )
       SELECT extract(month from dates_of_week.date) as mon, COALESCE(SUM(total_price), 0) as total
       FROM dates_of_week
-        LEFT JOIN orders ON extract(month from dates_of_week.date) = extract(month from orders.created_at) AND orders.deleted_at IS NULL
+        LEFT JOIN orders ON extract(month from dates_of_week.date) = extract(month from orders.created_at)
+        AND extract(year from orders.created_at) = extract(year from current_date)
+        AND orders.status != 4
+        AND orders.deleted_at IS NULL
         LEFT JOIN order_items ON orders.id = order_items.order_id AND order_items.deleted_at IS NULL
       GROUP BY mon
       ORDER BY mon

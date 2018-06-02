@@ -9,10 +9,15 @@ class Ability
       can :manage, Product
       can :manage, User
       can :manage, Role
+      can :manage, Category
     elsif user && user.role.id == mod_id
       can :index, :main
       can :destroy, :session
+      can :index, Category
+      can :index, Product
+      can :create, Product
     elsif user && user.role.id == member_id
+      can :index, Product
       can :index, :main
       can :destroy, :session
     else
